@@ -31,3 +31,4 @@ logging:
   level:
     com.zealthy: DEBUG
     org.springframework.web: DEBUG
+    server.port=${PORT:8080}
