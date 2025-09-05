@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Node (frontend)
+frontend/node_modules/
+frontend/build/
+
+# Java (backend)
+backend/target/
+
+# OS / IDE
+.DS_Store
+.idea/
+*.iml
