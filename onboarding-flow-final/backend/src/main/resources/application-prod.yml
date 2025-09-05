@@ -6,6 +6,10 @@ spring:
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      minimum-idle: 5
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,8 +18,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+        batch_versioned_data: true
   jackson:
     property-naming-strategy: SNAKE_CASE
+  cache:
+    type: simple
 
 server:
   port: ${PORT:8080}
@@ -31,6 +42,11 @@ management:
     web:
       exposure:
         include: health,info,metrics
+      base-path: /actuator
   endpoint:
     health:
-      show-details: when-authorized
+      show-details: always
+      show-components: always
+  health:
+    defaults:
+      enabled: true
